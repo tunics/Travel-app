@@ -1,0 +1,40 @@
+{
+    "name": "travel-app",
+    "version": "1.0.0",
+    "description": "Project created for Udacity Front End Web Developer Nanodegree Program. A travel app tha uses multiple APIs for showing a city, weather and images for a planning trip.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node src/server/server.js",
+        "build-prod": "webpack --config webpack.prod.js",
+        "build-dev": "webpack serve --config webpack.dev.js --open"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tunics/Travel-app.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tunics/Travel-app/issues"
+    },
+    "homepage": "https://github.com/tunics/Travel-app#readme",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.15.8",
+        "@babel/preset-env": "^7.15.8",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^4.0.0",
+        "css-loader": "^6.4.0",
+        "html-webpack-plugin": "^5.4.0",
+        "node-sass": "^6.0.1",
+        "sass-loader": "^12.2.0",
+        "style-loader": "^3.3.0",
+        "webpack": "^5.58.2",
+        "webpack-cli": "^4.9.1",
+        "webpack-dev-server": "^4.3.1"
+    }
+}
