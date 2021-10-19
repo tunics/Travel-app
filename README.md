@@ -4,5 +4,5 @@ Project created for Udacity Front End Web Developer Nanodegree Program. A travel
 #
 *APIs used:*
 * [Geonames](http://www.geonames.org/export/web-services.html)
-* [Weatherbit]()
-* [Pixabay]()
+* [Weatherbit](https://www.weatherbit.io/)
+* [Pixabay](https://pixabay.com/api/docs/)
