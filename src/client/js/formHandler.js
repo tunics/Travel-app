@@ -1,8 +1,13 @@
 import { changeHeader, getPixabayKey } from "..";
 
-function start(txt) {
-    // Client.changeHeader(txt, Client.getPixabayKey());
-}
+const isToday = (someDate) => {
+    const today = new Date();
+    return (
+        someDate.getDate() == today.getDate() &&
+        someDate.getMonth() == today.getMonth() &&
+        someDate.getFullYear() == today.getFullYear()
+    );
+};
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -10,7 +15,8 @@ function handleSubmit(event) {
     let formText = document.getElementById("place-txt").value;
     let formDate = document.getElementById("travel-date").value;
     console.log("Place: " + formText + " Date: " + formDate);
+
+    changeHeader(formText, getPixabayKey());
 }
 
-changeHeader("bikini", getPixabayKey());
-export { start, handleSubmit };
+export { handleSubmit };

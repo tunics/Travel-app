@@ -24,7 +24,6 @@ async function getPixabayResp(key, imgTxt) {
         "&q=travel+airplane+wing&image_type=photo&pretty=true";
 
     const axios = require("axios");
-
     try {
         const response = await axios.get(apiUrl);
         if (response.data.total > 0) {
@@ -56,6 +55,6 @@ async function changeHeader(imgTxt, key) {
         });
 }
 
-// changeHeader("newyork", getPixabayKey());
+changeHeader("travel", getPixabayKey()); // Load first image
 
 export { changeHeader, getPixabayKey, getPixabayResp };
