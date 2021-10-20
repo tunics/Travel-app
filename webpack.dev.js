@@ -11,7 +11,7 @@ module.exports = {
         port: 9000,
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "./dist"),
         filename: "main.bundle.js",
         libraryTarget: "var",
         library: "Client",
@@ -27,6 +27,14 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ["style-loader", "css-loader", "sass-loader"],
+            },
+            {
+                test: /\.html$/i,
+                loader: "html-loader",
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: "asset/resource",
             },
         ],
     },

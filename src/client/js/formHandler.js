@@ -8,10 +8,9 @@ function handleSubmit(event) {
     event.preventDefault();
 
     let formText = document.getElementById("place-txt").value;
-    console.log(formText);
+    let formDate = document.getElementById("travel-date").value;
+    console.log("Place: " + formText + " Date: " + formDate);
 }
 
-export { handleSubmit };
-
 changeHeader("bikini", getPixabayKey());
-export { start };
+export { start, handleSubmit };

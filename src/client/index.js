@@ -10,4 +10,11 @@ import "./styles/base.scss";
 import "./styles/header.scss";
 // import "./styles/style.scss";
 
-export { generate, changeHeader, getPixabayKey, getPixabayResp, start };
+export {
+    generate,
+    changeHeader,
+    getPixabayKey,
+    getPixabayResp,
+    handleSubmit,
+    start,
+};
