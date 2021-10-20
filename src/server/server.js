@@ -1,3 +1,6 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
@@ -29,17 +32,6 @@ app.listen(3000, function () {
     console.log("Travel App listening on port 3000!");
 });
 
-/* Dependencies */
-const bodyParser = require("body-parser");
-/* Middleware*/
-//Here we are configuring express to use body-parser as middle-ware.
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-//
-//
-//
-// *******************************************************
 // GET route
 app.get("/all", sendData);
 
@@ -73,4 +65,17 @@ function addEntry(req, res) {
         feeling: req.body.feelings,
     };
     projectData = newEntry;
+}
+
+//Get API Keys
+app.get("/keys", getKeys);
+
+function getKeys(req, res) {
+    const keys = {
+        pixabay: process.env.PIXABAY_KEY,
+        weatherbit: process.env.WEATHERBIT_KEY,
+        geonames: process.env.GEONAMES_USER,
+    };
+    console.log(keys);
+    res.send(keys);
 }

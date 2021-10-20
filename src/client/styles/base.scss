@@ -1,0 +1,14 @@
+// Basic colors
+$primary-color: #04d9c3;
+$secondary-color: #f2799a;
+$dark-green: #028d8c;
+$txt-color: #555;
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    line-height: 1.5rem;
+    color: $txt-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
