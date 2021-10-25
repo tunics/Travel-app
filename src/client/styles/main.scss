@@ -1,0 +1,52 @@
+@import "base";
+
+main {
+    background-color: white;
+    margin: -4rem 1rem 2rem 1rem;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 2rem);
+    max-width: 600px;
+    box-shadow: $drop-shadow;
+}
+
+#logo {
+    display: block;
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+
+input {
+    background-color: $light-blue;
+    border: none;
+    padding: 0.7rem;
+    color: $txt-color;
+    box-shadow: $inner-shadow;
+    margin: 0.25rem;
+    border-radius: 2rem;
+}
+
+input[type="submit"] {
+    background-color: $primary-color;
+    border: none;
+    padding: 0.7rem 2rem;
+    color: white;
+    box-shadow: $drop-shadow-btn;
+
+    &:hover {
+        background-color: $dark-green;
+        cursor: pointer;
+    }
+}
+
+#error-msg {
+    color: $secondary-color;
+    display: none;
+}
+
+#date-txt {
+    text-transform: capitalize;
+}

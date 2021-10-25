@@ -76,6 +76,76 @@ function getKeys(req, res) {
         weatherbit: process.env.WEATHERBIT_KEY,
         geonames: process.env.GEONAMES_USER,
     };
+    console.log("Sending keys: ");
     console.log(keys);
     res.send(keys);
 }
+
+let placeData = {};
+let weatherData = {};
+let datesData = {};
+
+//Post Place
+app.post("/place", addPlace);
+
+function addPlace(req, res) {
+    newPlace = {
+        city: req.body.city,
+        country: req.body.country,
+        lat: req.body.lat,
+        lng: req.body.lng,
+    };
+    placeData = newPlace;
+    console.log("Posting Place: ");
+    console.log(placeData);
+}
+
+//Get Place
+app.get("/place", function (req, res) {
+    res.send(placeData);
+    console.log("Sending Place: ");
+    console.log(placeData);
+});
+
+//Post Weather
+app.post("/weather", addWeather);
+
+function addWeather(req, res) {
+    newWeather = {
+        temp: req.body.temp,
+        maxTemp: req.body.maxTemp,
+        minTemp: req.body.minTemp,
+        icon: req.body.icon,
+        description: req.body.description,
+    };
+    weatherData = newWeather;
+    console.log("Posting Weather: ");
+    console.log(weatherData);
+}
+
+//Get Weather
+app.get("/weather", function (req, res) {
+    res.send(weatherData);
+    console.log("Sending Weather: ");
+    console.log(weatherData);
+});
+
+//Post Date
+app.post("/dates", addDates);
+
+function addDates(req, res) {
+    newDates = {
+        date: req.body.date,
+        daysLeft: req.body.daysLeft,
+    };
+    datesData = newDates;
+    console.log("Posting Dates: ");
+    console.log(datesData);
+}
+
+//Get Dates
+app.get("/dates", function (req, res) {
+    res.send(datesData);
+    console.log("Sending Date: ");
+    console.log(datesData);
+});

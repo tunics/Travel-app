@@ -1,5 +1,6 @@
 const headerImg = document.getElementById("travel-img");
 const pixabayUrl = "https://pixabay.com/api/?key=";
+const genericTerms = "travel+airplane"; //used to get generic image
 
 async function getPixabayKey() {
     const axios = require("axios");
@@ -16,20 +17,18 @@ async function getPixabayResp(key, imgTxt) {
 
     let apiUrl =
         pixabayUrl + key + "&q=" + imgTxt + "&image_type=photo&cat=travel";
-    console.log("Api URL AQUI: " + apiUrl);
 
     const genericImage =
         pixabayUrl +
         key +
-        "&q=travel+airplane+wing&image_type=photo&pretty=true";
+        "&q=" +
+        genericTerms +
+        "+wing&image_type=photo&pretty=true";
 
     const axios = require("axios");
     try {
         const response = await axios.get(apiUrl);
         if (response.data.total > 0) {
-            console.log(
-                "URL da imagem: " + response.data.hits[0].largeImageURL
-            );
             return response.data.hits[0].largeImageURL;
         } else {
             const response = await axios.get(genericImage);

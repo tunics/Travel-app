@@ -2,7 +2,14 @@
 $primary-color: #04d9c3;
 $secondary-color: #f2799a;
 $dark-green: #028d8c;
+$light-blue: #c9f1ee;
 $txt-color: #555;
+$bg-color: #f2f2f2;
+
+//shadows
+$drop-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.15);
+$drop-shadow-btn: 0px 2px 3px 0px rgba(0, 0, 0, 0.15);
+$inner-shadow: inset 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
 
 body {
     font-family: "Ubuntu", sans-serif;
@@ -10,5 +17,6 @@ body {
     color: $txt-color;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    background-color: $bg-color;
 }

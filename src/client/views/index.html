@@ -17,7 +17,7 @@
     <body>
         <header><img id="travel-img" /></header>
         <main>
-            <img src="../media/logo.svg" alt="travel planner app" />
+            <img id="logo" src="../media/logo.svg" alt="travel planner app" />
 
             <section id="search">
                 <form class="" onsubmit="return Client.handleSubmit(event)">
@@ -35,6 +35,7 @@
                         min="2021-10-20"
                     />
                     <input
+                        id="submit-btn"
                         type="submit"
                         name=""
                         value="Let's go!"
@@ -43,8 +44,27 @@
                     />
                 </form>
             </section>
-        </main>
 
+            <section id="result">
+                <section id="trip">
+                    <span id="error-msg"></span>
+                    <h2 id="place-txt"></h2>
+                    <h3 id="date-txt"></h3>
+                    <h4 id="days-left-txt"></h4>
+                </section>
+
+                <section id="packing-list">
+                    <h3>Add a packing list:</h3>
+                    <ul id="list"></ul>
+
+                    <form id="todo">
+                        <input id="todo-input" type="text" onsubmit="" />
+                        <input id="todo-submit" type="submit" onclick="" />
+                    </form>
+                </section>
+            </section>
+        </main>
+        <!-- 
         <div class="container">
             <h1>Weather Journal App</h1>
 
@@ -72,6 +92,6 @@
                 <div id="date"></div>
                 <div id="content"></div>
             </div>
-        </div>
+        </div> -->
     </body>
 </html>
