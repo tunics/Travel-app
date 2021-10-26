@@ -1,4 +1,3 @@
-// import { generate } from "./js/app";
 import { changeHeader } from "./js/headerChanger";
 import { getPixabayKey } from "./js/headerChanger";
 import { getPixabayResp } from "./js/headerChanger";
@@ -9,6 +8,5 @@ import "./styles/resets.scss";
 import "./styles/base.scss";
 import "./styles/header.scss";
 import "./styles/main.scss";
-// import "./styles/style.scss";
 
 export { changeHeader, getPixabayKey, getPixabayResp, handleSubmit, updateUI };

@@ -7,6 +7,7 @@ async function updateUI() {
     const minMaxTxt = document.getElementById("min-max-txt");
     const conditionTxt = document.getElementById("condition-txt");
     const weatherIcon = document.getElementById("weather-icon");
+    const anotherTripTxt = document.getElementById("another-txt");
 
     tripTxt.style.display = "block";
 
@@ -25,6 +26,9 @@ async function updateUI() {
         conditionTxt.innerHTML = data.weather.description;
         weatherIcon.src = data.weather.icon;
         weatherIcon.alt = data.weather.description;
+
+        anotherTripTxt.style.display = "block";
+        anotherTripTxt.innerHTML = "Plan another trip: ";
     } catch (error) {
         console.error(error);
     }

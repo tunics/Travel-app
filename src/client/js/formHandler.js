@@ -4,6 +4,7 @@ import { updateUI } from "./uiUpdater";
 const inputPlace = document.getElementById("place");
 const inputDate = document.getElementById("travel-date");
 const errorMsg = document.getElementById("error-msg");
+
 const outlineError = "2px solid #f2799a";
 
 let tripData = {};
@@ -138,6 +139,8 @@ async function handleSubmit(event) {
             weather: tripData.weather,
             dates: tripData.dates,
         });
+
+        let newHeader = await changeHeader(formText, getPixabayKey());
 
         updateUI();
     } else if (formText != "" && formDate == "") {

@@ -7,7 +7,7 @@ main {
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     width: calc(100% - 2rem);
     max-width: 600px;
     box-shadow: $drop-shadow;
@@ -17,6 +17,16 @@ main {
     display: block;
     max-width: 100px;
     margin-bottom: 1rem;
+    align-self: center;
+}
+
+#search form {
+    display: flex;
+    align-content: stretch;
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 }
 
 input {
@@ -27,6 +37,8 @@ input {
     box-shadow: $inner-shadow;
     margin: 0.25rem;
     border-radius: 2rem;
+    flex-grow: 2;
+    width: 100%;
 }
 
 input[type="submit"] {
@@ -35,6 +47,7 @@ input[type="submit"] {
     padding: 0.7rem 2rem;
     color: white;
     box-shadow: $drop-shadow-btn;
+    flex-grow: 1;
 
     &:hover {
         background-color: $dark-green;
@@ -47,9 +60,12 @@ input[type="submit"] {
     display: none;
 }
 
-#date-txt {
-}
-
 #trip {
     display: none;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    align-self: stretch;
 }
