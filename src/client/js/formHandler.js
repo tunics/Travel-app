@@ -1,10 +1,12 @@
 import { changeHeader, getPixabayKey } from "..";
 import { updateUI } from "./uiUpdater";
 
-const inputPlace = document.getElementById("place-txt");
+const inputPlace = document.getElementById("place");
 const inputDate = document.getElementById("travel-date");
 const errorMsg = document.getElementById("error-msg");
 const outlineError = "2px solid #f2799a";
+
+let tripData = {};
 
 //Get today date
 const today = new Date();
@@ -32,8 +34,8 @@ const postData = async (url = "", data = {}) => {
 };
 
 async function getKeys() {
-    const response = await fetch("http://localhost:3000/keys");
     try {
+        const response = await fetch("http://localhost:3000/keys");
         const data = await response.json();
         return data;
     } catch (error) {
@@ -44,23 +46,19 @@ async function getKeys() {
 async function getPlace(key, txt) {
     let geonamesURL = `http://api.geonames.org/searchJSON?q=${txt}&username=${key}`;
 
-    const respGeonames = await fetch(geonamesURL);
     try {
+        const respGeonames = await fetch(geonamesURL);
+        console.log(respGeonames.ok);
         const data = await respGeonames.json();
-        postData("http://localhost:3000/place", {
+
+        tripData.place = {
             city: data.geonames[0].name,
             country: data.geonames[0].countryName,
             lat: data.geonames[0].lat,
             lng: data.geonames[0].lng,
-        });
-
-        //to get weather
-        let latLong = {
-            lat: data.geonames[0].lat,
-            lng: data.geonames[0].lng,
         };
-        console.log(data.geonames[0].name);
-        return latLong;
+
+        return data.geonames[0];
     } catch (error) {
         console.error(error);
     }
@@ -70,18 +68,20 @@ async function getWeather(key, location) {
     let weatherbitURL = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${location.lat}&lon=${location.lng}&key=${key}`;
     const iconURL = "https://www.weatherbit.io/static/img/icons/";
 
-    const respWeatherbit = await fetch(weatherbitURL);
     try {
+        const respWeatherbit = await fetch(weatherbitURL);
+        console.log(respWeatherbit.ok);
         const data = await respWeatherbit.json();
-        console.log(data.data[0]);
-        postData("http://localhost:3000/weather", {
+
+        tripData.weather = {
             temp: data.data[0].temp,
             maxTemp: data.data[0].max_temp,
             minTemp: data.data[0].min_temp,
             icon: iconURL + data.data[0].weather.icon + ".png",
             description: data.data[0].weather.description,
-        });
-        return data.data[0].max_temp;
+        };
+
+        return data.data[0];
     } catch (error) {
         console.error(error);
     }
@@ -108,19 +108,15 @@ async function getDate(date) {
         daysLeft: daysLeft,
     };
 
-    postData("http://localhost:3000/dates", {
+    tripData.dates = {
         date: dates.date,
         daysLeft: dates.daysLeft,
-    });
-
-    console.log("Date after click: " + dates.date);
-    console.log("Today is: " + today);
-    console.log(dates.daysLeft);
-
+    };
     return dates;
 }
 
 async function handleSubmit(event) {
+    tripData = [];
     event.preventDefault();
 
     errorMsg.style.display = "none"; // Hide error msg
@@ -131,28 +127,19 @@ async function handleSubmit(event) {
     let formDate = inputDate.value;
 
     if (formText != "" && formDate != "") {
-        console.log("Place: " + formText + " Date: " + formDate);
+        let keysObject = await getKeys();
+        let place = await getPlace(keysObject.geonames, formText);
+        let weather = await getWeather(keysObject.weatherbit, place);
+        getDate(formDate);
 
-        try {
-            let keysObject = await getKeys();
-            let placeLocation = await getPlace(keysObject.geonames, formText);
-            getDate(formDate);
-            let weather = await getWeather(
-                keysObject.weatherbit,
-                placeLocation
-            );
-            let newHeader = await changeHeader(formText, getPixabayKey());
+        console.log(tripData);
+        postData("http://localhost:3000/addEntry", {
+            place: tripData.place,
+            weather: tripData.weather,
+            dates: tripData.dates,
+        });
 
-            const logInfo = async (a, b) => {
-                console.log(a, b);
-            };
-
-            logInfo("teste: ", weather);
-
-            updateUI();
-        } catch {
-            console.error(error);
-        }
+        updateUI();
     } else if (formText != "" && formDate == "") {
         errorMsg.style.display = "block";
         inputDate.style.outline = outlineError;

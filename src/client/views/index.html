@@ -19,10 +19,32 @@
         <main>
             <img id="logo" src="../media/logo.svg" alt="travel planner app" />
 
+            <section id="result">
+                <section id="trip">
+                    <h2 id="place-txt"></h2>
+                    <h3 id="date-txt"></h3>
+                    <p id="days-left-txt"></p>
+                    <h4 id="weather-txt"></h4>
+                    <p id="min-max-txt"></p>
+                    <p id="condition-txt"></p>
+                    <img id="weather-icon" />
+                </section>
+
+                <section id="packing-list">
+                    <h3>Add a packing list:</h3>
+                    <ul id="list"></ul>
+
+                    <form id="todo">
+                        <input id="todo-input" type="text" onsubmit="" />
+                        <input id="todo-submit" type="submit" onclick="" />
+                    </form>
+                </section>
+            </section>
+
             <section id="search">
                 <form class="" onsubmit="return Client.handleSubmit(event)">
                     <input
-                        id="place-txt"
+                        id="place"
                         type="text"
                         name="input"
                         value=""
@@ -43,25 +65,7 @@
                         onsubmit="return Client.handleSubmit(event)"
                     />
                 </form>
-            </section>
-
-            <section id="result">
-                <section id="trip">
-                    <span id="error-msg"></span>
-                    <h2 id="place-txt"></h2>
-                    <h3 id="date-txt"></h3>
-                    <h4 id="days-left-txt"></h4>
-                </section>
-
-                <section id="packing-list">
-                    <h3>Add a packing list:</h3>
-                    <ul id="list"></ul>
-
-                    <form id="todo">
-                        <input id="todo-input" type="text" onsubmit="" />
-                        <input id="todo-submit" type="submit" onclick="" />
-                    </form>
-                </section>
+                <span id="error-msg"></span>
             </section>
         </main>
         <!-- 

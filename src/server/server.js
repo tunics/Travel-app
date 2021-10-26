@@ -58,13 +58,12 @@ app.post("/addEntry", addEntry);
 
 function addEntry(req, res) {
     newEntry = {
-        city: req.body.city,
-        temp: req.body.temp,
-        icon: req.body.icon,
-        date: req.body.date,
-        feeling: req.body.feelings,
+        place: req.body.place,
+        weather: req.body.weather,
+        dates: req.body.dates,
     };
     projectData = newEntry;
+    console.log(projectData);
 }
 
 //Get API Keys
