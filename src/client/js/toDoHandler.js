@@ -1,5 +1,4 @@
 const todoInput = document.getElementById("todo-input");
-const todoBtn = document.getElementById("todo-submit");
 const htmlList = document.getElementById("list");
 
 let packingList = [];
