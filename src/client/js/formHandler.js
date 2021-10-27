@@ -13,7 +13,15 @@ let tripData = {};
 const today = new Date();
 
 //Disable previous dates from date picker selection
-inputDate.min = today.toISOString().split("T")[0];
+function disablePastDates() {
+    try {
+        inputDate.min = today.toISOString().split("T")[0];
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+
+disablePastDates();
 
 // Async POST
 const postData = async (url = "", data = {}) => {
@@ -117,8 +125,8 @@ async function getDate(date) {
 }
 
 async function handleSubmit(event) {
-    tripData = [];
     event.preventDefault();
+    tripData = [];
 
     errorMsg.style.display = "none"; // Hide error msg
     inputPlace.style.outline = "none";
@@ -154,4 +162,4 @@ async function handleSubmit(event) {
     }
 }
 
-export { handleSubmit };
+export { handleSubmit, getKeys, postData };
