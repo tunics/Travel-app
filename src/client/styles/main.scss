@@ -69,3 +69,52 @@ input[type="submit"] {
     width: 100%;
     align-self: stretch;
 }
+
+#packing-list {
+    display: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+#list {
+    padding: 1rem 0.5rem;
+    list-style-type: circle;
+    list-style-position: inside;
+
+    & li {
+        padding: 0.2rem;
+    }
+
+    & li button {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0 0.5rem;
+        background-color: $primary-color;
+        border: none;
+        padding: 0.2rem;
+        color: white;
+        box-shadow: $drop-shadow-btn;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $dark-green;
+        }
+
+        & span {
+            font-size: 1rem;
+        }
+    }
+}
+
+#todo {
+    display: flex;
+
+    & #todo-submit {
+        flex-shrink: 2;
+    }
+    & #todo-input {
+        flex-shrink: 1;
+    }
+}

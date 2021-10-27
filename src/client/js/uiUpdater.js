@@ -8,8 +8,10 @@ async function updateUI() {
     const conditionTxt = document.getElementById("condition-txt");
     const weatherIcon = document.getElementById("weather-icon");
     const anotherTripTxt = document.getElementById("another-txt");
+    const packingList = document.getElementById("packing-list");
 
     tripTxt.style.display = "block";
+    packingList.style.display = "block";
 
     try {
         const resp = await fetch("http://localhost:3000/allEntries");
